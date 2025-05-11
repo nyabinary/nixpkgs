@@ -1,6 +1,6 @@
 {
   lib,
-  python3Packages,
+  python313Packages,
   fetchFromGitHub,
   wrapGAppsHook4,
   meson,
@@ -11,18 +11,19 @@
   libadwaita,
   gst_all_1,
   libsecret,
+  libportal,
 }:
 
-python3Packages.buildPythonApplication {
+python313Packages.buildPythonApplication {
   pname = "high-tide";
-  version = "0-unstable-2025-05-01";
+  version = "0-unstable-2025-05-11";
   pyproject = false;
 
   src = fetchFromGitHub {
     owner = "Nokse22";
     repo = "high-tide";
-    rev = "6278ff9471b7481cf0291ab2a9f6d06322506dfc";
-    hash = "sha256-4pVRVXEwz0ngjS1Vpt/o00lLYsZ6SvTCk4ivyGoQ4lQ=";
+    rev = "54155c3611e5c8a8c8da41763683a41af066f93e";
+    hash = "sha256-Fu+sZfQZuXOw8JSXLwbO8Q+3CvLqfbBhCJCWLZVt6Iw=";
   };
 
   nativeBuildInputs = [
@@ -43,9 +44,10 @@ python3Packages.buildPythonApplication {
       gst-plugins-ugly
       gst-plugins-bad
       libsecret
+      libportal
     ]);
 
-  dependencies = with python3Packages; [
+  dependencies = with python313Packages; [
     pygobject3
     tidalapi
     requests
@@ -60,7 +62,7 @@ python3Packages.buildPythonApplication {
     description = "Libadwaita TIDAL client for Linux";
     homepage = "https://github.com/Nokse22/high-tide";
     license = with lib.licenses; [ gpl3Plus ];
-    mainProgram = "HighTide";
+    mainProgram = "high-tide";
     maintainers = with lib.maintainers; [
       nyabinary
       griffi-gh
